@@ -21,3 +21,7 @@ class GameListView(generic.ListView):
     model = Game
     paginate_by = 5
     queryset = Game.objects.select_related("developer")
+
+
+class GameDetailView(generic.DetailView):
+    model = Game
