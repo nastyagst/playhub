@@ -1,69 +1,67 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="row">
-  <div class="col-12">
-    <div class="card mb-4">
-      <div class="card-header pb-0">
-        <h6>Library</h6>
-      </div>
-      <div class="card-body px-0 pt-0 pb-2">
-        <div class="table-responsive p-0">
 
-          {% if not game_list %}
-             <p class="text-center p-4">Games have not been added yet!</p>
-          {% else %}
+  <div style="margin-bottom: 20px;">
+    <h3>Game Library 🎮</h3>
 
-          <table class="table align-items-center mb-0">
-            <thead>
-              <tr>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Game</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Developer</th>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date release</th>
-                <th class="text-secondary opacity-7"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for game in game_list %}
-              <tr>
-                <td>
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      {% if game.image %}
-                        <img src="{{ game.image.url }}" class="avatar avatar-sm me-3" alt="game_image">
-                      {% else %}
-                        <div class="avatar avatar-sm me-3 bg-gradient-primary">🎮</div>
-                      {% endif %}
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">{{ game.title }}</h6>
-                      <p class="text-xs text-secondary mb-0">
-                        {% for genre in game.genres.all %} {{ genre.name }} {% endfor %}
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">{{ game.developer.name }}</p>
-                  <p class="text-xs text-secondary mb-0">{{ game.developer.country }}</p>
-                </td>
-                <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold">{{ game.release_date }}</span>
-                </td>
-                <td class="align-middle">
-                  <a href="{% url 'catalog:game-detail' pk=game.pk %}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                    More
-                  </a>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-          {% endif %}
+    <form action="" method="get" style="display: flex; gap: 10px;">
+      {{ search_form.title }}
 
-        </div>
-      </div>
-    </div>
+      <button type="submit" class="btn btn-primary">
+        Search
+      </button>
+    </form>
   </div>
-</div>
+
+  {% if game_list %}
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Developer</th>
+          <th>Genres</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for game in game_list %}
+          <tr>
+            <td>
+              {% if game.image %}
+                <img src="{{ game.image.url }}" alt="game" style="width: 50px; border-radius: 10px;">
+              {% else %}
+                <span class="text-muted">No image</span>
+              {% endif %}
+            </td>
+
+            <td>
+              <b>{{ game.title }}</b>
+              <br>
+              <small class="text-muted">{{ game.release_date }}</small>
+            </td>
+
+            <td>{{ game.developer.name }}</td>
+
+            <td>
+              {% for genre in game.genres.all %}
+                {{ genre.name }}
+              {% endfor %}
+            </td>
+
+            <td>
+              <a href="{% url 'catalog:game-detail' pk=game.pk %}" class="btn btn-sm btn-info">
+                Details
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  {% else %}
+    <p>No games found. Try a different search.</p>
+  {% endif %}
+
 {% endblock %}

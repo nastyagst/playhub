@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth import get_user_model
 from .models import Game, Developer, Genre
+from .forms import GameSearchForm
+
 
 def index(request):
     num_games = Game.objects.count()
@@ -20,7 +22,23 @@ def index(request):
 class GameListView(generic.ListView):
     model = Game
     paginate_by = 5
-    queryset = Game.objects.select_related("developer")
+    context_object_name = "game_list"
+    template_name = "catalog/game_list.html"
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(GameListView, self).get_context_data(**kwargs)
+        title = self.request.GET.get("title", "")
+        context["search_form"] = GameSearchForm(initial={"title": title})
+        return context
+
+    def get_queryset(self):
+        queryset = Game.objects.select_related("developer")
+        form = GameSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return queryset.filter(title__icontains=form.cleaned_data["title"])
+
+        return queryset
 
 
 class GameDetailView(generic.DetailView):
