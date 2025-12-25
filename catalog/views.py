@@ -60,3 +60,14 @@ def register(request):
 
     context = {"form": form}
     return render(request, "registration/register.html", context)
+
+
+class DeveloperListView(generic.ListView):
+    model = Developer
+    paginate_by = 5
+    context_object_name = "developer_list"
+    template_name = "catalog/developer_list.html"
+
+
+class DeveloperDetailView(generic.DetailView):
+    model = Developer

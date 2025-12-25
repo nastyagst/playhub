@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+from django.urls import reverse
 
 class Gamer(AbstractUser):
     bio = models.TextField(blank=True, verbose_name="About me")
@@ -41,6 +42,9 @@ class Game(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("catalog:game-detail", args=[str(self.id)])
 
 
 class Comment(models.Model):
