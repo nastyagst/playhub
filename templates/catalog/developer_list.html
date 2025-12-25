@@ -1,46 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="my-4"><i class="fas fa-code"> Developers</i></h1>
+<h1 class="my-4"><i class="fas fa-code"></i> Developers</h1>
 
 {% if object_list %}
 <div class="row">
   {% for developer in object_list %}
   <div class="col-md-6 mb-4">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title"> {{ developer.name }}</h5>
-        <p class="card-text text-muted">
-          Game developers
-        </p>
-        <a href="{% url 'catalog:developer-detail' developer.pk %}" class="btn btn-outline-primary">Details</a>
+    <div class="card h-100 shadow-sm flex-row align-items-center p-2">
+      <div class="col-4 text-center">
+        {% if developer.image %}
+        <img src="{{ developer.image.url }}" alt="{{ developer.name }}" class="img-fluid rounded"
+             style="max-height: 100px; object-fit: contain;">
+        {% else %}
+        <div class="text-muted"><i class="fas fa-building fa-3x"></i></div>
+        {% endif %}
+      </div>
+
+      <div class="col-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ developer.name }}</h5>
+          <p class="card-text text-muted small">
+            {% if developer.country %}{{ developer.country }}{% endif %}
+          </p>
+          <a href="{% url 'catalog:developer-detail' developer.pk %}" class="btn btn-outline-primary btn-sm">
+            View Details
+          </a>
+        </div>
       </div>
     </div>
   </div>
   {% endfor %}
 </div>
-
-{% if is_paginated %}
-<div class="pagination mt-4">
-  <span class="step-links">
-    {% if page_obj.has_previous %}
-    <a class="btn btn-outline-secondary btn-sm" href="?page=1">&laquo; first</a>
-    <a class="btn btn-outline-secondary btn-sm" href="?page={{ page_obj.previous_page_number }}">previous</a>
-    {% endif %}
-
-  <span class="current mx-2">
-    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-  </span>
-
-  {% if page_obj.has_next %}
-    <a class="btn btn-outline-secondary btn-sm" href="?page={{ page_obj.next_page_number }}">next</a>
-    <a class="btn btn-outline-secondary btn-sm" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-  {% endif %}
-  </span>
-</div>
-{% endif %}
-
 {% else %}
-  <div class="alert alert-warning">No developers found</div>
+<div class="alert alert-warning">No developers found.</div>
 {% endif %}
 {% endblock %}

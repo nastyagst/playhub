@@ -25,6 +25,8 @@ class Genre(models.Model):
 class Developer(models.Model):
     name = models.CharField(max_length=255, unique=True)
     country = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to="developers/", blank=True, null=True)
 
     def __str__(self):
         return self.name
