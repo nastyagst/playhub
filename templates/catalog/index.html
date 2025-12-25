@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center py-5">
+  <h1>Welcome to PlayHub!</h1>
+  <p class="lead">Your personal library of games and developers.</p>
+</div>
+
+<div class="row text-center">
+
+  <div class="col-md-4">
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <i class="fas fa-gamepad fa-3x text-primary mb-3"></i>
+        <h5 class="card-title">Games</h5>
+        <p class="card-text display-4">{{ num_games }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <i class="fas fa-code fa-3x text-success mb-3"></i>
+        <h5 class="card-title">Developers</h5>
+        <p class="card-text display-4">{{ num_devs }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <i class="fas fa-users fa-3x text-warning mb-3"></i>
+        <h5 class="card-title">Gamers</h5>
+        <p class="card-text display-4">{{ num_gamers }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

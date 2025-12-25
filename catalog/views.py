@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.contrib.auth import get_user_model
 from .models import Game, Developer, Genre
-from .forms import GameSearchForm
+from .forms import GameSearchForm, GamerCreationForm
+from django.contrib.auth import login
+
 
 
 def index(request):
@@ -43,3 +45,18 @@ class GameListView(generic.ListView):
 
 class GameDetailView(generic.DetailView):
     model = Game
+
+
+def register(request):
+    if request.method != "POST":
+        form = GamerCreationForm()
+    else:
+        form = GamerCreationForm(data=request.POST)
+
+    if form.is_valid():
+        new_user = form.save()
+        login(request, new_user)
+        return redirect("catalog:index")
+
+    context = {"form": form}
+    return render(request, "registration/register.html", context)
