@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import get_user_model
 from .models import Game, Developer, Genre
 from .forms import GameSearchForm, GamerCreationForm
 from django.contrib.auth import login
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
@@ -21,7 +24,7 @@ def index(request):
     return render(request, "catalog/index.html", context=context)
 
 
-class GameListView(generic.ListView):
+class GameListView(LoginRequiredMixin, generic.ListView):
     model = Game
     paginate_by = 5
     context_object_name = "game_list"
@@ -43,7 +46,7 @@ class GameListView(generic.ListView):
         return queryset
 
 
-class GameDetailView(generic.DetailView):
+class GameDetailView(LoginRequiredMixin, generic.DetailView):
     model = Game
 
 
@@ -62,12 +65,29 @@ def register(request):
     return render(request, "registration/register.html", context)
 
 
-class DeveloperListView(generic.ListView):
+class DeveloperListView(LoginRequiredMixin, generic.ListView):
     model = Developer
     paginate_by = 5
     context_object_name = "developer_list"
     template_name = "catalog/developer_list.html"
 
 
-class DeveloperDetailView(generic.DetailView):
+class DeveloperDetailView(LoginRequiredMixin, generic.DetailView):
     model = Developer
+
+
+class GameCreateView(LoginRequiredMixin, CreateView):
+    model = Game
+    fields = "__all__"
+    template_name = "catalog/game_edit.html"
+
+
+class GameUpdateView(LoginRequiredMixin, UpdateView):
+    model = Game
+    fields = "__all__"
+    template_name = "catalog/game_edit.html"
+
+class GameDeleteView(LoginRequiredMixin, DeleteView):
+    model = Game
+    success_url = reverse_lazy("catalog:game-list")
+    template_name = "catalog/game_confirm_delete.html"
