@@ -3,7 +3,7 @@ from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import get_user_model
 from .models import Game, Developer, Genre
-from .forms import GameSearchForm, GamerCreationForm
+from .forms import GameSearchForm, GamerCreationForm, GameForm
 from django.contrib.auth import login
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -78,13 +78,13 @@ class DeveloperDetailView(LoginRequiredMixin, generic.DetailView):
 
 class GameCreateView(LoginRequiredMixin, CreateView):
     model = Game
-    fields = "__all__"
+    form_class = GameForm
     template_name = "catalog/game_edit.html"
 
 
 class GameUpdateView(LoginRequiredMixin, UpdateView):
     model = Game
-    fields = "__all__"
+    form_class = GameForm
     template_name = "catalog/game_edit.html"
 
 class GameDeleteView(LoginRequiredMixin, DeleteView):

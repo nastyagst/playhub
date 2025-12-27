@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Gamer
+from .models import Gamer, Game
 
 
 class GameSearchForm(forms.Form):
@@ -16,3 +16,12 @@ class GamerCreationForm(UserCreationForm):
     class Meta:
         model = Gamer
         fields = ("username", "email")
+
+
+class GameForm(forms.ModelForm):
+    class Meta:
+        model = Game
+        fields = "__all__"
+        widgets = {
+            "release_date": forms.DateInput(attrs={"type": "date", "class": "form-control"})
+        }
