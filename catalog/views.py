@@ -6,7 +6,7 @@ from .models import Game, Developer, Genre
 from .forms import GameSearchForm, GamerCreationForm, GameForm
 from django.contrib.auth import login
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 
@@ -26,7 +26,7 @@ def index(request):
 
 class GameListView(LoginRequiredMixin, generic.ListView):
     model = Game
-    paginate_by = 5
+    paginate_by = 10
     context_object_name = "game_list"
     template_name = "catalog/game_list.html"
 
@@ -76,18 +76,27 @@ class DeveloperDetailView(LoginRequiredMixin, generic.DetailView):
     model = Developer
 
 
-class GameCreateView(LoginRequiredMixin, CreateView):
+class GameCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Game
     form_class = GameForm
     template_name = "catalog/game_edit.html"
 
+    def test_func(self):
+        return self.request.user.is_staff
 
-class GameUpdateView(LoginRequiredMixin, UpdateView):
+
+class GameUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Game
     form_class = GameForm
     template_name = "catalog/game_edit.html"
 
-class GameDeleteView(LoginRequiredMixin, DeleteView):
+    def test_func(self):
+        return self.request.user.is_staff
+
+class GameDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Game
     success_url = reverse_lazy("catalog:game-list")
     template_name = "catalog/game_confirm_delete.html"
+
+    def test_func(self):
+        return self.request.user.is_staff
