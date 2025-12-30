@@ -65,4 +65,35 @@
   </div>
 </div>
 
+<hr>
+<div class="mt-4">
+  <h3>Comments ({{ game.comments.count }})</h3>
+
+  {% if user.is_authenticated %}
+  <form action="{% url 'catalog:comment-create' pk=game.pk %}" method="post" class="mb-4">
+    {% csrf_token %}
+    <div class="form-group">
+      {{ comment_form.text }}
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Post</button>
+  </form>
+  {% else %}
+  <p><a href="{% url 'login' %}">Log in</a> to leave a comment</p>
+  {% endif %}
+
+  {% for comment in game.comments.all %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-muted">
+        <strong>{{ comment.user.username }}</strong>
+        <span class="small">- {{ comment.created_at|date:"d M Y H:i" }}</span>
+      </h6>
+      <p class="card-text">{{ comment.text|linebreaks }}</p>
+    </div>
+  </div>
+  {% empty %}
+  <p class="text-muted">No comments yet. Be the first!</p>
+  {% endfor %}
+
+</div>
 {% endblock %}

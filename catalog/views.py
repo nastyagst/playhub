@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import get_user_model
-from .models import Game, Developer, Genre
-from .forms import GameSearchForm, GamerCreationForm, GameForm
+from .models import Game, Developer, Genre, Comment
+from .forms import GameSearchForm, GamerCreationForm, GameForm, CommentForm
 from django.contrib.auth import login
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -48,6 +48,11 @@ class GameListView(LoginRequiredMixin, generic.ListView):
 
 class GameDetailView(LoginRequiredMixin, generic.DetailView):
     model = Game
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["comment_form"] = CommentForm
+        return context
 
 
 def register(request):
@@ -100,3 +105,25 @@ class GameDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user.is_staff
+
+
+class CommentCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = "catalog/game_detail.html"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        game_id = self.kwargs["pk"]
+        form.instance.game = get_object_or_404(Game, pk=game_id)
+
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("catalog:game-detail", kwargs={"pk": self.kwargs["pk"]})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["game"] = get_object_or_404(Game, pk=self.kwargs["pk"])
+        context["comment_form"] = context["form"]
+        return context
