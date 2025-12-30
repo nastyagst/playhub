@@ -26,7 +26,7 @@ def index(request):
 
 class GameListView(LoginRequiredMixin, generic.ListView):
     model = Game
-    paginate_by = 10
+    paginate_by = 9
     context_object_name = "game_list"
     template_name = "catalog/game_list.html"
 
@@ -67,7 +67,7 @@ def register(request):
 
 class DeveloperListView(LoginRequiredMixin, generic.ListView):
     model = Developer
-    paginate_by = 5
+    paginate_by = 8
     context_object_name = "developer_list"
     template_name = "catalog/developer_list.html"
 
