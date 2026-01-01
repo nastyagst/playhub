@@ -1,7 +1,47 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="row mt-4">
+  <div class="col-md-3">
+    <div class="card shadow-sm mb-4">
+      <div class="card-header bg-primary text-white">
+        Genres
+      </div>
+      <div class="list-group list-group-flush">
+        <a href="{% url 'catalog:game-list' %}"
+        class="list-group-item list-group-item-action {% if not request.GET.genre %}active{% endif %}">
+          All genres
+        </a>
+        {% for genre in genre_list%}
+        <a href="?genre={{ genre.id }}"
+        class="list-group-item list-group-item-action {% if request.GET.genre == genre.id|stringformat:'s' %}active{% endif %}">
+          {{ genre.name }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
 
+    <div class="card shadow-sm">
+      <div class="card-header bg-secondary text-white">
+        Developers
+      </div>
+      <div class="list-group list-group-flush">
+        <a href="{% url 'catalog:game-list' %}"
+        class="list-group-item list-group-item-action {% if not request.GET.developer %}active{% endif %}">
+          All developers
+        </a>
+        {% for developer in developer_list%}
+        <a href="?developer={{ developer.id }}"
+        class="list-group-item list-group-item-action {% if request.GET.developer == developer.id|stringformat:'s' %}active{% endif %}">
+          {{ developer.name }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+
+<div class="col-md-9">
 <div style="margin-bottom: 20px;">
   <h3>Game Library 🎮</h3>
 
@@ -67,7 +107,7 @@
 {% if is_paginated %}
 <nav class="mt-4">
   <ul class="pagination justify-content-center">
-    
+
     {% if page_obj.has_previous %}
       <li class="page-item">
         <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Back</a>
@@ -77,7 +117,7 @@
         <span class="page-link">Back</span>
       </li>
     {% endif %}
-    
+
     {% for num in page_obj.paginator.page_range %}
       {% if page_obj.number == num %}
         <li class="page-item active">
@@ -102,5 +142,5 @@
   </ul>
 </nav>
 {% endif %}
-
+</div> </div>
 {% endblock %}

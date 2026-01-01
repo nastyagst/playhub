@@ -26,7 +26,7 @@ def index(request):
 
 class GameListView(LoginRequiredMixin, generic.ListView):
     model = Game
-    paginate_by = 9
+    paginate_by = 11
     context_object_name = "game_list"
     template_name = "catalog/game_list.html"
 
@@ -34,6 +34,8 @@ class GameListView(LoginRequiredMixin, generic.ListView):
         context = super(GameListView, self).get_context_data(**kwargs)
         title = self.request.GET.get("title", "")
         context["search_form"] = GameSearchForm(initial={"title": title})
+        context["genre_list"] = Genre.objects.all()
+        context["developer_list"] = Developer.objects.all()
         return context
 
     def get_queryset(self):
@@ -41,7 +43,15 @@ class GameListView(LoginRequiredMixin, generic.ListView):
         form = GameSearchForm(self.request.GET)
 
         if form.is_valid():
-            return queryset.filter(title__icontains=form.cleaned_data["title"])
+            queryset = queryset.filter(title__icontains=form.cleaned_data["title"])
+
+        genre_id = self.request.GET.get("genre")
+        if genre_id:
+            queryset = queryset.filter(genres__id=genre_id)
+
+        developer_id = self.request.GET.get("developer")
+        if developer_id:
+            queryset = queryset.filter(developer__id=developer_id)
 
         return queryset
 
