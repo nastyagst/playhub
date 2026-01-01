@@ -1,14 +1,28 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Gamer, Game, Comment
+from .models import Gamer, Game, Comment, Genre, Developer
 
 
 class GameSearchForm(forms.Form):
     title = forms.CharField(
-        max_length=255,
-        required=False,
-        label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by game title..."})
+        max_length = 255,
+        required = False,
+        label = "",
+        widget = forms.TextInput(attrs={"placeholder": "Search by game title..."})
+    )
+
+    genres = forms.ModelMultipleChoiceField(
+        queryset=Genre.objects.all(),
+        required = False,
+        widget = forms.CheckboxSelectMultiple,
+        label = "Genres"
+    )
+
+    developers = forms.ModelMultipleChoiceField(
+        queryset = Developer.objects.all(),
+        required = False,
+        widget = forms.CheckboxSelectMultiple,
+        label = "Developers"
     )
 
 

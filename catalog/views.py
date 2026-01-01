@@ -32,10 +32,7 @@ class GameListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(GameListView, self).get_context_data(**kwargs)
-        title = self.request.GET.get("title", "")
-        context["search_form"] = GameSearchForm(initial={"title": title})
-        context["genre_list"] = Genre.objects.all()
-        context["developer_list"] = Developer.objects.all()
+        context["search_form"] = GameSearchForm(self.request.GET)
         return context
 
     def get_queryset(self):
@@ -43,15 +40,14 @@ class GameListView(LoginRequiredMixin, generic.ListView):
         form = GameSearchForm(self.request.GET)
 
         if form.is_valid():
-            queryset = queryset.filter(title__icontains=form.cleaned_data["title"])
+            if form.cleaned_data["title"]:
+                queryset = queryset.filter(title__icontains=form.cleaned_data["title"])
 
-        genre_id = self.request.GET.get("genre")
-        if genre_id:
-            queryset = queryset.filter(genres__id=genre_id)
+            if form.cleaned_data["genres"]:
+                queryset = queryset.filter(genres__in=form.cleaned_data["genres"]).distinct()
 
-        developer_id = self.request.GET.get("developer")
-        if developer_id:
-            queryset = queryset.filter(developer__id=developer_id)
+            if form.cleaned_data["developers"]:
+                queryset = queryset.filter(developer__in=form.cleaned_data["developers"])
 
         return queryset
 
