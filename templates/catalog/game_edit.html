@@ -1,0 +1,26 @@
+{% extends "base.html"%}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow mt-4">
+      <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">
+          {% if form.instance.pk %}
+          Edit Game
+          {% else %}
+          Add New Game{% endif %}
+        </h4>
+      </div>
+      <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <hr>
+          <button type="submit" class="btn btn-success w-100">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

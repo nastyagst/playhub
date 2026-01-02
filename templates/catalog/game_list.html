@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="get">
+
+  <div class="row mt-4">
+    <div class="col-md-3">
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-header text-white" style="background-color: #0d0000">
+          <span>
+          Genres
+          </span>
+        </div>
+        <div class="card-body">
+          {% for checkbox in search_form.genres %}
+          <div class="mb-1">
+            <label>
+              {{ checkbox.tag }} {{ checkbox.choice_label }}
+            </label>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-header text-white" style="background-color: #0d0000">
+          <span>
+          Developers
+          </span>
+        </div>
+        <div class="card-body">
+          {% for checkbox in search_form.developers %}
+          <div class="mb-1">
+            <label>
+              {{ checkbox.tag }} {{ checkbox.choice_label }}
+            </label>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Apply Filters</button>
+    </div>
+
+    <div class="col-md-9">
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Game Library 🎮</h3>
+        <div class="d-flex gap-2">
+          {{ search_form.title }}
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+
+      {% if game_list %}
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Developer</th>
+          <th>Genres</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for game in game_list %}
+        <tr>
+          <td>
+            {% if game.image %}
+            <img src="{{ game.image.url }}" alt="game" style="width: 50px; border-radius: 5px;">
+            {% else %}
+            <span class="text-muted">No img</span>
+            {% endif %}
+          </td>
+          <td>
+            <b>{{ game.title }}</b><br>
+            <small class="text-muted">{{ game.release_date }}</small>
+          </td>
+          <td>{{ game.developer.name }}</td>
+          <td>
+            {% for genre in game.genres.all %}
+            <span class="badge bg-secondary">{{ genre.name }}</span>
+            {% endfor %}
+          </td>
+          <td>
+            <a href="{% url 'catalog:game-detail' pk=game.pk %}" class="btn text-white" style="background-color: #0d0000">
+              <span>
+              Details
+              </span>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p class="text-muted">No games found.</p>
+      {% endif %}
+
+      {% if is_paginated %}
+      <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+          <li class="page-item"><a class="page-link"
+                                   href="?{{ request.GET.urlencode }}&page={{ page_obj.previous_page_number }}">Back</a>
+          </li>
+          {% endif %}
+
+          <li class="page-item active"><span class="page-link">{{ page_obj.number }}</span></li>
+
+          {% if page_obj.has_next %}
+          <li class="page-item"><a class="page-link"
+                                   href="?{{ request.GET.urlencode }}&page={{ page_obj.next_page_number }}">Next</a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+
+    </div>
+  </div>
+
+</form>
+{% endblock %}
