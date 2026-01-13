@@ -1,0 +1,458 @@
+[
+{
+    "model": "catalog.gamer",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$92cGo1eyLRVX9hrU6JLCi8$etcuXF0q+TrWhoQs42QwlecbnPWGVs5DfFoFk9nKG50=",
+        "last_login": "2026-01-01T19:21:46.781Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "hociy2015@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-12-21T13:56:25.211Z",
+        "bio": "",
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "catalog.gamer",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$1imO0zqRnUi3dz45fH3pAe$s8XQtSJSTnN05eI20XOswt0b0Q/F1eUKon0XTZD9sfs=",
+        "last_login": "2026-01-02T18:45:11.759Z",
+        "is_superuser": false,
+        "username": "gamer000",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-12-24T18:11:35Z",
+        "bio": "",
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "catalog.gamer",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$eiXjQ7kHhyMNHcikhQcIYJ$SGKx2lAnn8GuNQ+K86dJhZLqYyRfiq9wYWnnHhpTFPU=",
+        "last_login": "2025-12-27T16:53:55.836Z",
+        "is_superuser": false,
+        "username": "Alexandr",
+        "first_name": "",
+        "last_name": "",
+        "email": "alexandr@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-12-27T16:53:55.224Z",
+        "bio": "",
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 1,
+    "fields": {
+        "name": "RPG"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 2,
+    "fields": {
+        "name": "Shooter"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 3,
+    "fields": {
+        "name": "Action role-playing"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 4,
+    "fields": {
+        "name": "Survival horror"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 5,
+    "fields": {
+        "name": "Adventure"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 6,
+    "fields": {
+        "name": "Simulation"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 7,
+    "fields": {
+        "name": "Strategy"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 8,
+    "fields": {
+        "name": "Sports"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 9,
+    "fields": {
+        "name": "Sandbox"
+    }
+},
+{
+    "model": "catalog.genre",
+    "pk": 10,
+    "fields": {
+        "name": "MOBA"
+    }
+},
+{
+    "model": "catalog.developer",
+    "pk": 1,
+    "fields": {
+        "name": "Valve",
+        "country": "USA",
+        "description": "Valve developers are a team of world-class artists, programmers, and writers creating iconic games (Half-Life, Counter-Strike, Portal, Dota) and technology (Steam, Source Engine), known for their iterative, player-focused design, deep expertise, flat structure (no job titles), and focus on connecting players through digital platforms and innovative hardware like Steam Deck. They blend startup ethos with large-company resources, emphasizing polished, intuitive experiences through extensive playtesting and a passion for connecting gamers.",
+        "image": "developers/Valve-logo.jpg"
+    }
+},
+{
+    "model": "catalog.developer",
+    "pk": 2,
+    "fields": {
+        "name": "Ubisoft",
+        "country": "France",
+        "description": "Ubisoft is a major French video game company known for creating and publishing popular franchises like Assassin's Creed, Far Cry, Just Dance, and Tom Clancy's series, operating globally with numerous development studios and a focus on rich, immersive worlds. Founded by the Guillemot brothers in 1986, it's a global leader in entertainment, developing games for PC, consoles, and mobile, and fostering a diverse international team.",
+        "image": "developers/Ubisoft-Logo.png"
+    }
+},
+{
+    "model": "catalog.developer",
+    "pk": 3,
+    "fields": {
+        "name": "Bethesda Softworks",
+        "country": "USA",
+        "description": "Bethesda Game Studios is an American video game developer and a studio of ZeniMax Media based in Rockville, Maryland. It is best known for its action role-playing franchises, including The Elder Scrolls, Fallout, and Starfield. Bethesda Game Studios opened in 2001 as the development unit of Bethesda Softworks, separating from publishing operations. Todd Howard serves as the studio's executive producer, leading it with managing director Ashley Cheng and studio director Angela Browder. As of November 2023, Bethesda Game Studios had 450 employees.[1]",
+        "image": "developers/bethesda-game-studios-logo-png_seeklogo-284919.png"
+    }
+},
+{
+    "model": "catalog.developer",
+    "pk": 4,
+    "fields": {
+        "name": "Rockstar Games",
+        "country": "USA",
+        "description": "Rockstar Games is a renowned American video game publisher, a subsidiary of Take-Two Interactive, famous for creating immersive, critically acclaimed open-world games like Grand Theft Auto, Red Dead Redemption, Max Payne, and Bully, known for deep storytelling, high production values, and vibrant, dynamic worlds that push interactive entertainment into mainstream culture.",
+        "image": "developers/channels4_profile.jpg"
+    }
+},
+{
+    "model": "catalog.developer",
+    "pk": 5,
+    "fields": {
+        "name": "Electronic Arts (EA)",
+        "country": "USA",
+        "description": "Electronic Arts (EA) is a leading global developer, publisher, and marketer of digital interactive entertainment, creating and delivering popular video games like Apex Legends, The Sims, Battlefield, and EA SPORTS FC (formerly FIFA) for consoles, PCs, and mobile devices, known for building online communities around key franchises and deeply engaging players through storytelling and live services. Headquartered in Redwood City, California, EA began in 1982 and grew from promoting \"software artists\" to becoming a major force in the industry, acquiring studios and focusing on internal development.",
+        "image": "developers/Electronic-Arts-Logo.svg.png"
+    }
+},
+{
+    "model": "catalog.developer",
+    "pk": 6,
+    "fields": {
+        "name": "Capcom",
+        "country": "Japan",
+        "description": "Capcom Co., Ltd. is a leading Japanese video game developer and publisher, headquartered in Osaka, known for creating iconic franchises like Resident Evil, Street Fighter, Monster Hunter, Mega Man, and Devil May Cry. Founded in 1979, the company evolved from manufacturing electronic game machines into a global entertainment giant, focusing on digital content, arcade operations, and leveraging its strong intellectual properties across various media.",
+        "image": "developers/Capcom-Presents-at-New-York-Comic-Con.png"
+    }
+},
+{
+    "model": "catalog.developer",
+    "pk": 7,
+    "fields": {
+        "name": "Epic Games",
+        "country": "USA",
+        "description": "Epic Games is a leading American interactive entertainment company, famous for developing massive games like Fortnite (with its social ecosystem including LEGO Fortnite, Rocket Racing) and creating the industry-standard Unreal Engine, used across games, film, and more; they also run the Epic Games Store for PC game distribution, offering developers tools for an entire digital ecosystem. Founded by Tim Sweeney in 1991, they've grown from shareware games like ZZT to a global powerhouse in 3D technology and digital entertainment.",
+        "image": "developers/images.jfif"
+    }
+},
+{
+    "model": "catalog.developer",
+    "pk": 8,
+    "fields": {
+        "name": "CD Projekt Red",
+        "country": "Poland",
+        "description": "CD Projekt RedCD Projekt Red (CDPR) is a Polish video game developer known for creating immersive, story-driven RPGs like The Witcher series and Cyberpunk 2077, focusing on player choice, quality, and deep worlds, operating with a gamer-first philosophy from their Warsaw headquarters and global studios. They aim to craft memorable experiences that resonate with players long after playing, with a global team of over a thousand professionals.",
+        "image": "developers/CD_Projekt_Red_логотип.png"
+    }
+},
+{
+    "model": "catalog.developer",
+    "pk": 9,
+    "fields": {
+        "name": "Riot Games",
+        "country": "USA",
+        "description": "Riot Games is a major American video game developer, publisher, and esports organizer, famous for its flagship title League of Legends (LoL), and known for creating immersive player-focused experiences like Valorant, Teamfight Tactics, and the Emmy-winning animated series Arcane, all expanding the rich Runeterra universe. Founded in 2006 and owned by Tencent, they're a global company focused on free-to-play games supported by cosmetics, driving huge esports growth and multimedia ventures.",
+        "image": "developers/LOL_CMS_317_Tile_01-Feature_H50-V50-min_bz7waxz83vsjvua6mn4h.jpg"
+    }
+},
+{
+    "model": "catalog.developer",
+    "pk": 10,
+    "fields": {
+        "name": "Mojang Studios",
+        "country": "Sweden",
+        "description": "Mojang Studios is the Swedish game developer, a subsidiary of Xbox Game Studios (Microsoft), famous for creating the world's best-selling game, Minecraft, focusing on play, creativity, and community, operating globally from its Stockholm base with other locations. Rebranded from Mojang AB in 2020, the studio emphasizes collaboration, exploration, and fun, expanding beyond Minecraft into other experiences like Minecraft Dungeons, aiming to build a better world through play.",
+        "image": "developers/1920x1080_N13gN2Z.format-webp.width-1600_cmV5r4tC5PGjAdub.webp"
+    }
+},
+{
+    "model": "catalog.game",
+    "pk": 1,
+    "fields": {
+        "title": "Counter-Strike 2",
+        "description": "Counter-Strike 2 (CS2) is a free-to-play, tactical, team-based first-person shooter from Valve that serves as a major technical upgrade to CS:GO, built on the Source 2 engine, featuring revolutionary volumetric smoke physics that react to gameplay, enhanced graphics, \"sub-tick\" updates for precise action registration, and redesigned maps, all while maintaining the classic Terrorist vs. Counter-Terrorist bomb defusal/hostage rescue objectives and competitive focus.",
+        "release_date": "2023-09-27",
+        "image": "games/capsule_616x353.jpg",
+        "developer": 1,
+        "genres": [
+            2
+        ],
+        "gamers": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "catalog.game",
+    "pk": 2,
+    "fields": {
+        "title": "Far Cry 6",
+        "description": "Far Cry 6 is an open-world, first-person shooter set on the fictional Caribbean island of Yara, where players embody Dani Rojas, a local guerrilla fighter aiming to overthrow the tyrannical dictator Antón Castillo (voiced by Giancarlo Esposito) and his regime, using makeshift weapons, vehicles, and animal companions (Amigos) in a modern-day revolution.",
+        "release_date": "2021-10-07",
+        "image": "games/s3zMp9o1SdEtPJK267avcCxT.avif",
+        "developer": 2,
+        "genres": [
+            2
+        ],
+        "gamers": []
+    }
+},
+{
+    "model": "catalog.game",
+    "pk": 3,
+    "fields": {
+        "title": "Skyrim",
+        "description": "The Elder Scrolls V: Skyrim is a massive, open-world fantasy RPG where you play as the Dragonborn, a hero destined to defeat the world-eating dragon Alduin, exploring a vast, war-torn land filled with dungeons, cities, and quests, all while defining your own legend in a world rich with choice, exploration, and lore. It features first/third-person perspective, incredible freedom to roam, learn dragon shouts (Thu'um), and get lost in countless side stories or focus on the main quest.",
+        "release_date": "2011-11-11",
+        "image": "games/skyrim.webp",
+        "developer": 3,
+        "genres": [
+            2,
+            3
+        ],
+        "gamers": []
+    }
+},
+{
+    "model": "catalog.game",
+    "pk": 5,
+    "fields": {
+        "title": "Grand Theft Auto V",
+        "description": "Grand Theft Auto V (GTA V) is a massive open-world action-adventure game set in the fictional state of San Andreas (based on Southern California), following three distinct criminals—Michael, Franklin, and Trevor—as they plan and execute elaborate heists in the corrupt city of Los Santos, blending single-player storytelling with extensive freedom to explore, engage in criminal activities, and enjoy vast online multiplayer modes (GTA Online).",
+        "release_date": "2013-09-17",
+        "image": "games/Grand_Theft_Auto_V.png",
+        "developer": 4,
+        "genres": [
+            2
+        ],
+        "gamers": []
+    }
+},
+{
+    "model": "catalog.game",
+    "pk": 6,
+    "fields": {
+        "title": "Resident Evil",
+        "description": "Resident Evil (known as Biohazard in Japan) is a major Capcom franchise defining the survival horror genre, centering on bio-engineered monsters, deadly viruses (like the T-Virus), and the Umbrella Corporation's evil experiments, forcing protagonists to manage limited resources, solve puzzles, and fight zombies and mutated creatures to survive catastrophic outbreaks. It spans popular video games (from classic fixed-camera horror to over-the-shoulder action and first-person scares) and has expanded into successful films, comics, and TV.",
+        "release_date": "2021-05-07",
+        "image": "games/Обложка_Resident_Evil_Village.jpg",
+        "developer": 6,
+        "genres": [
+            2,
+            4
+        ],
+        "gamers": []
+    }
+},
+{
+    "model": "catalog.game",
+    "pk": 7,
+    "fields": {
+        "title": "FIFA 22",
+        "description": "FIFA 22 is a professional football simulation game developed by EA Vancouver and EA Romania and published by EA Sports. Released on October 1, 2021, it serves as the 29th installment in the long-running FIFA series.",
+        "release_date": "2021-09-27",
+        "image": "games/capsule_616x353_1.jpg",
+        "developer": 5,
+        "genres": [
+            8
+        ],
+        "gamers": []
+    }
+},
+{
+    "model": "catalog.game",
+    "pk": 8,
+    "fields": {
+        "title": "Red Dead Redemption 2",
+        "description": "Red Dead Redemption 2 (RDR2) is a vast, atmospheric open-world Western action-adventure game from Rockstar Games, set in a fictionalized late 1899 America as the Wild West era ends, following outlaw Arthur Morgan and the Van der Linde gang as they flee lawmen and internal strife, forcing Arthur to choose loyalty and ideals while surviving a changing world through gunfights, exploration, hunting, and complex character choices, leading into the story of the first RDR.",
+        "release_date": "2018-10-26",
+        "image": "games/Red_Dead_Redemption_II.jpg",
+        "developer": 4,
+        "genres": [
+            3
+        ],
+        "gamers": []
+    }
+},
+{
+    "model": "catalog.game",
+    "pk": 9,
+    "fields": {
+        "title": "The Witcher 3: Wild Hunt",
+        "description": "The Witcher 3: Wild Hunt is a critically acclaimed, story-driven, open-world action RPG where you play as Geralt of Rivia, a monster hunter seeking his adopted daughter Ciri amidst a supernatural invasion by the spectral Wild Hunt in a war-torn, dark fantasy world, offering deep choices, tactical combat, and extensive exploration.",
+        "release_date": "2015-05-19",
+        "image": "games/tw3.jfif",
+        "developer": 8,
+        "genres": [
+            1
+        ],
+        "gamers": []
+    }
+},
+{
+    "model": "catalog.game",
+    "pk": 10,
+    "fields": {
+        "title": "Cyberpunk 2077",
+        "description": "Cyberpunk 2077 is a first-person, open-world action RPG set in the dystopian, futuristic Night City, where players as mercenary V navigate corporate greed, body modification, and violent gangs, experiencing a story about survival, consciousness, and shaping your legend in a world where technology blurs humanity's lines, featuring deep character customization, intense combat, and choices that affect the branching narrative, including its major spy-thriller expansion, Phantom Liberty.",
+        "release_date": "2020-12-10",
+        "image": "games/Cyberpunk_2077_box_art.jpg",
+        "developer": 8,
+        "genres": [
+            1
+        ],
+        "gamers": []
+    }
+},
+{
+    "model": "catalog.game",
+    "pk": 11,
+    "fields": {
+        "title": "Valorant",
+        "description": "Valorant is a free-to-play, 5v5, character-based tactical first-person shooter (FPS) by Riot Games where teams of attackers and defenders use unique agent abilities and precise gunplay to plant or defuse a device called the \"Spike\". Blending strategic shooting like Counter-Strike with character powers similar to Overwatch, players choose from a roster of agents, each with distinct skills, to outmaneuver opponents across strategic maps in a round-based format until one team reaches 13 round wins.",
+        "release_date": "2020-06-12",
+        "image": "games/Valorant.webp",
+        "developer": 9,
+        "genres": [
+            2
+        ],
+        "gamers": []
+    }
+},
+{
+    "model": "catalog.game",
+    "pk": 12,
+    "fields": {
+        "title": "Minecraft",
+        "description": "A place that made sense': Minecraft is 15 years old and ...Minecraft is a popular 3D sandbox video game where players explore a blocky, procedurally generated world, gathering resources to craft tools, build structures, and survive against monsters, with gameplay focused on creativity, exploration, and resource management in modes like Survival (resource gathering, health, hunger) and Creative (unlimited resources, flight).",
+        "release_date": "2011-11-18",
+        "image": "games/Minecraft_2024_cover_art.png",
+        "developer": 10,
+        "genres": [
+            9
+        ],
+        "gamers": []
+    }
+},
+{
+    "model": "catalog.game",
+    "pk": 13,
+    "fields": {
+        "title": "Dota 2",
+        "description": "Dota 2 is a free-to-play, fantasy-themed multiplayer online battle arena (MOBA) game where two teams of five players each choose unique heroes and battle to destroy the enemy's base structure, the Ancient, while defending their own. Developed by Valve, it's known for its deep strategy, large hero pool, complex mechanics, and significant esports scene, offering immense replayability with diverse heroes, items, and team compositions in each match.",
+        "release_date": "2013-07-09",
+        "image": "games/Dota_2.png",
+        "developer": 1,
+        "genres": [
+            1,
+            10
+        ],
+        "gamers": []
+    }
+},
+{
+    "model": "catalog.comment",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "game": 1,
+        "text": "This is my favourite game!",
+        "created_at": "2025-12-30T17:16:28.069Z"
+    }
+},
+{
+    "model": "catalog.comment",
+    "pk": 3,
+    "fields": {
+        "user": 2,
+        "game": 1,
+        "text": "Привіт",
+        "created_at": "2025-12-30T17:17:30.056Z"
+    }
+},
+{
+    "model": "catalog.comment",
+    "pk": 4,
+    "fields": {
+        "user": 2,
+        "game": 5,
+        "text": "Classic game",
+        "created_at": "2025-12-30T17:23:19.106Z"
+    }
+},
+{
+    "model": "catalog.comment",
+    "pk": 5,
+    "fields": {
+        "user": 2,
+        "game": 3,
+        "text": "The best game in this genre",
+        "created_at": "2026-01-02T18:46:36.983Z"
+    }
+}
+]
