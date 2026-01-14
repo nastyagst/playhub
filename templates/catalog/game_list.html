@@ -6,43 +6,50 @@
   <div class="row mt-4">
     <div class="col-md-3">
 
-      <div class="card shadow-sm mb-4">
-        <div class="card-header text-white" style="background-color: #0d0000">
-          <span>
-          Genres
-          </span>
-        </div>
-        <div class="card-body">
-          {% for checkbox in search_form.genres %}
-          <div class="mb-1">
-            <label>
-              {{ checkbox.tag }} {{ checkbox.choice_label }}
-            </label>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
+      <button class="btn btn-primary w-100 d-md-none mb-3" type="button" data-bs-toggle="collapse"
+              data-bs-target="#filterMenu" aria-expanded="false" aria-controls="filterMenu">
+        Show/Hide Filters
+      </button>
 
-      <div class="card shadow-sm mb-4">
-        <div class="card-header text-white" style="background-color: #0d0000">
-          <span>
-          Developers
-          </span>
-        </div>
-        <div class="card-body">
-          {% for checkbox in search_form.developers %}
-          <div class="mb-1">
-            <label>
-              {{ checkbox.tag }} {{ checkbox.choice_label }}
-            </label>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
+      <div class="collapse d-md-block" id="filterMenu">
 
-      <button type="submit" class="btn btn-success w-100">Apply Filters</button>
+        <div class="card shadow-sm mb-4">
+          <div class="card-header text-white" style="background-color: #0d0000">
+              <span>
+              Genres
+              </span>
+          </div>
+          <div class="card-body">
+            {% for checkbox in search_form.genres %}
+            <div class="mb-1">
+              <label>
+                {{ checkbox.tag }} {{ checkbox.choice_label }}
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="card shadow-sm mb-4">
+          <div class="card-header text-white" style="background-color: #0d0000">
+              <span>
+              Developers
+              </span>
+          </div>
+          <div class="card-body">
+            {% for checkbox in search_form.developers %}
+            <div class="mb-1">
+              <label>
+                {{ checkbox.tag }} {{ checkbox.choice_label }}
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 mb-4">Apply Filters</button>
+      </div>
     </div>
-
     <div class="col-md-9">
 
       <div class="d-flex justify-content-between align-items-center mb-3">
@@ -85,7 +92,8 @@
             {% endfor %}
           </td>
           <td>
-            <a href="{% url 'catalog:game-detail' pk=game.pk %}" class="btn text-white" style="background-color: #0d0000">
+            <a href="{% url 'catalog:game-detail' pk=game.pk %}" class="btn text-white"
+               style="background-color: #0d0000">
               <span>
               Details
               </span>
